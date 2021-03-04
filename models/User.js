@@ -14,20 +14,22 @@ const UserSchema = new Schema(
            unique: true,
            validate: function(email) {
                return /^[a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
+           }
        },
-       thought: [{
+       thoughts: [{
            type: Schema.Types.ObjectId,
-           ref: 'Thought'
+           ref: 'Thought',
        }],
        friends: [{
            type: Schema.Types.ObjectId,
-           ref: 'User'
-       }] 
+           ref: 'User',
+       }]
     },
     {
         toJSON: {
             virtuals: true
         },
+        id: false
     }
 );
 
