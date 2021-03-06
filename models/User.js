@@ -11,10 +11,8 @@ const UserSchema = new Schema(
        email: {
            type: String,
            required: true,
-           unique: true,
-           validate: function(email) {
-               return /^[a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
-           }
+           unique: true,           
+           match: [/^[a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/]           
        },
        thoughts: [{
            type: Schema.Types.ObjectId,
