@@ -1,6 +1,6 @@
 const moment = require('moment');
 
 const formatDate = function(rawDate) {
-    return moment(rawDate).format("dddd, MMMM Do YYYY, h:mm:ss a")
+    return moment(rawDate).format("MMMM Do YYYY, h:mm a")
 }
 module.exports = formatDate

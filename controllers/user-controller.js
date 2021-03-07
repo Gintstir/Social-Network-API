@@ -12,7 +12,7 @@ const userController = {
         //     }
         // )
         .select('-__v')
-        // .select('-thoughts')        
+        //.select('-thoughts')        
         .sort({ _id: 1 })//sort in Asc order by _id
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
