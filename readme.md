@@ -1,4 +1,20 @@
-# Social-Network-API
+# Social-Network-API ![badge](https://img.shields.io/badge/License-Apache~2.0-brightgreen.svg)  
+
+
+**Video Walkthrough:**
+
+[Part # 1 User CRUD routes, Thoughts CREATE route](https://drive.google.com/file/d/1KEHk0f5oW_MUx39kzipSBscAg5skVEy9/view?usp=sharing)
+
+
+
+
+[Part # 2 Thought RUD routes, ADD/REMOVE Friend, CREATE Reaction](https://drive.google.com/file/d/1RRxm4TJESHYsfYH93PuYbJP6UUQU6Zwf/view?usp=sharing)
+
+
+
+
+[Part # 3 DELETE reaction](https://drive.google.com/file/d/1hVTC9OeN8RWv_AZeJv70-7vipo9tQl8Y/view?usp=sharing)
+
 
 ## Acceptance Criteria
 
@@ -12,30 +28,77 @@
 - WHEN I test API POST and DELETE routes in Insomnia Core
 - THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
 
-## Models
+## **Table of Contents**
 
-### User
+* *[Installation](#installation)*
+* *[Usage Instructions](#usage-instructions)*
+* *[Contributing](#contributing)*
+* *[Technology](#technology)*
+* *[Tests](#tests)*
+* *[Questions](#questions)*
+* *[License](#license)*
 
-- username
-    - String
-    - Unique
-    - Required
-    - Trimmed
+## **Installation**
 
-- email
+After cloning/forking the applications use the command `npm i` or `npm install` to download the necessary dependencies.
 
-    - String
-    - Required
-    - Unique
-    - Must match a valid email address (look into Mongoose's matching validation)
-- thoughts
-    - Array of _id values referencing the Thought model
-- friends
-    - Array of _id values referencing the User model (self-reference)
 
-**Schema Settings**
 
-Create a virtual called friendCount that retrieves the length of the user's friends array field on query.
+## **Usage-instructions**
+
+This application does not have a front-end and as such the routes can be tested in 'Insomnia Core" or any other desktop API design editor of your choosing. 
+
+
+
+## **Screenshots**
+
+<br>
+
+### USER routes:
+
+<br>
+
+GET all users: 
+![Get all users](public/assets/Get-all-Users.png)
+
+GET user by Id:
+![Get user by Id](public/assets/Get-User-by-ID.png)
+
+CREATE user:
+
+![Create user](public/assets/Create-User-2.png)
+
+UPDATE user: 
+
+![Update user](public/assets/Update-User.png)
+
+DELETE user:
+
+![Delete user](public/assets/Delete-User-by-Id.png)
+
+---
+
+<br>
+
+### Thought routes:
+
+<br>
+
+GET all thoughts:
+
+![Get all thoughts](public/assets/Get-All-Thoughts.png)
+
+GET thought by Id:
+
+![Get thought by id](public/assets/Get-Thought-by-Id.png)
+
+UPDATE thought:
+
+![Update thought](public/assets/Update-Thought.png)
+
+DELETE thought:
+
+![Delete thought](public/assets/Delete-Thought-by-Id.png)
 
 <br>
 
@@ -43,52 +106,17 @@ Create a virtual called friendCount that retrieves the length of the user's frie
 
 <br>
 
-### Thought
-
-- thoughtText
-    - String
-    - Required
-    - Must be between 1 and 280 characters
-- createdAt
-    - Date
-    - Set default value to the current timestamp
-    - Use moment in a getter method to format the timestamp on query
-- username (The user that created this thought)
-    - String
-    - Required
-- reactions (These are like replies)
-    - Array of nested documents created with the reactionSchema
-
-**Schema Settings**
-
-Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
+### Reaction routes:
 
 <br>
 
----
+CREATE reaction:
 
-<br>
- 
-### Reaction (schema only)
+![Create reaction](public/assets/Create-Reaction.png)
 
-- reactionID
-    - Use Mongoose's ObjectId data type
-    - Default value is set to a new ObjectId
+DELETE reaction: 
 
-- reactionBody
-    - String
-    - Required
-    - 280 character maximum
-- username
-    - String
-    - Required
-- createdAt
-    - Date
-    - Set default value to the current timestamp
-    - Use moment in a getter method to format the timestamp on query
-
-**Schema Setting**
-This will not be a model, but rather will be used as the reaction field's subdocument schema in the Thought model.
+![Delete reaction](public/assets/Delete-Reaction.png)
 
 <br>
 
@@ -96,29 +124,17 @@ This will not be a model, but rather will be used as the reaction field's subdoc
 
 <br>
 
-## API Routes
+### Friend routes:
 
-**/api/users**
+<br>
 
-- GET all users
+ADD friend:
 
-- GET a single user by its _id and populated thought and friend data
+![Add friend](public/assets/Add-Friend.png)
 
-- POST a new user:
+Remove friend:
 
-```
-// example data
-{
-  "username": "lernantino",
-  "email": "lernantino@gmail.com"
-}
-```
-
-- PUT to update a user by its _id
-
-- DELETE to remove user by its _id
-
-**BONUS**: Remove a user's associated thoughts when deleted.
+![Remove friend](public/assets/Remove-Friend.png)
 
 <br>
 
@@ -127,35 +143,35 @@ This will not be a model, but rather will be used as the reaction field's subdoc
 <br>
 
 
-**/api/users/:userId/friends/:friendId**
 
-- POST to add a new friend to a user's friend list
 
-- DELETE to remove a friend from a user's friend list
 
-**/api/thoughts**
+## **Contributing**
 
-- GET to get all thoughts
+Please refer to the **[Contributor Covenant](https://www.contributor-covenant.org/)** for contribution guidelines.
 
-- GET to get a single thought by its _id
+## **Technology**
 
-- POST to create a new thought (don't forget to push the created thought's _id to the associated user's thoughts array field)
+This project was completed using: 
+- `Node.js`
+- `Express`
+- `Insomnia`
+- `MongoDB`
+- `Mongoose`
+- `Moment.js`
 
-```
-// example data
-{
-  "thoughtText": "Here's a cool thought...",
-  "username": "lernantino",
-  "userId": "5edff358a0fcb779aa7b118b"
-}
-```
+## **Tests**  
 
-- PUT to update a thought by its _id
+No test need to be run at this time. 
 
-- DELETE to remove a thought by its _id
+## **Questions**
 
-**/api/thoughts/:thoughtId/reactions**
+For any questions, comments, or feedback please feel free to reach out: <br>
+- **[Github](https://github.com/gintstir)** 
+- **<gint.stirbys@gmail.com>**
 
-- POST to create a reaction stored in a single thought's reactions array field
+## **License** 
 
-- DELETE to pull and remove a reaction by the reaction's reactionId value
+Copyright © Gintautas Stirbys, 2021.  All Rights Reserved.
+
+This Project is licensed under the **[Apache~2.0](https://www.apache.org/licenses/LICENSE-2.0)** license.
